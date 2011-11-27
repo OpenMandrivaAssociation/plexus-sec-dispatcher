@@ -1,6 +1,6 @@
 Name:           plexus-sec-dispatcher
 Version:        1.4
-Release:        3
+Release:        5
 Summary:        Plexus Security Dispatcher Component
 
 Group:          Development/Java
