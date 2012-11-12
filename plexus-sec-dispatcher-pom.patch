@@ -1,0 +1,13 @@
+--- pom.xml.orig	2009-12-16 21:55:06.000000000 +0800
++++ pom.xml	2010-06-04 10:45:50.000000000 +0800
+@@ -38,10 +38,6 @@
+       <plugin>
+         <artifactId>maven-compiler-plugin
+         </artifactId>
+-        <configuration>
+-          <source>1.4</source>
+-          <target>1.4</target>
+-        </configuration>
+       </plugin>
+       <plugin>
+         <groupId>org.codehaus.modello</groupId>
