@@ -1,9 +1,9 @@
 %{?_javapackages_macros:%_javapackages_macros}
 Name:           plexus-sec-dispatcher
 Version:        1.4
-Release:        11.1%{?dist}
+Release:        17.1
 Summary:        Plexus Security Dispatcher Component
-
+Group:          Development/Java
 
 License:        ASL 2.0
 URL:            http://spice.sonatype.org
@@ -15,25 +15,14 @@ Patch0:        %{name}-pom.patch
 
 BuildArch: noarch
 
-BuildRequires: java-devel >= 1:1.6.0
 BuildRequires: maven-local
-BuildRequires: maven-plugin-plugin
-BuildRequires: maven-compiler-plugin
-BuildRequires: maven-install-plugin
-BuildRequires: maven-jar-plugin
-BuildRequires: maven-javadoc-plugin
-BuildRequires: maven-resources-plugin
-BuildRequires: maven-surefire-maven-plugin
+BuildRequires: modello
 BuildRequires: plexus-utils
 BuildRequires: plexus-cipher
 BuildRequires: plexus-containers-component-metadata
-BuildRequires: junit
-BuildRequires: forge-parent
-BuildRequires: spice-parent
-BuildRequires: maven-surefire-provider-junit
 
 Requires:       jpackage-utils
-Requires:       java
+Requires:       java-headless
 
 %description
 Plexus Security Dispatcher Component
@@ -50,30 +39,17 @@ API documentation for %{name}.
 %prep
 %setup -q
 %patch0 -p1
+%mvn_file : plexus/%{name}
 
 %build
-mvn-rpmbuild install javadoc:javadoc
+%mvn_build
 
 %install
-# jars
-install -Dpm 644 target/%{name}-%{version}.jar   %{buildroot}%{_javadir}/plexus/%{name}.jar
+%mvn_install
 
-# poms
-install -Dpm 644 pom.xml %{buildroot}%{_mavenpomdir}/JPP.plexus-%{name}.pom
+%files -f .mfiles
 
-%add_maven_depmap JPP.plexus-%{name}.pom plexus/%{name}.jar
-
-# javadoc
-install -d -m 0755 %{buildroot}%{_javadocdir}/plexus/%{name}
-cp -pr target/site/api*/* %{buildroot}%{_javadocdir}/plexus/%{name}
-
-%files
-%{_javadir}/plexus/*
-%{_mavenpomdir}/JPP.plexus-%{name}.pom
-%{_mavendepmapfragdir}/%{name}
-
-%files javadoc
-%{_javadocdir}/plexus/%{name}
+%files javadoc -f .mfiles-javadoc
 
 %changelog
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4-11
