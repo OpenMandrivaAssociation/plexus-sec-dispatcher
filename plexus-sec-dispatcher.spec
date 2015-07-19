@@ -1,7 +1,7 @@
 %{?_javapackages_macros:%_javapackages_macros}
 Name:           plexus-sec-dispatcher
 Version:        1.4
-Release:        17.1
+Release:        17.2
 Summary:        Plexus Security Dispatcher Component
 Group:          Development/Java
 
