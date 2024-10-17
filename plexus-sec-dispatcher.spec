@@ -6,7 +6,7 @@ Summary:        Plexus Security Dispatcher Component
 Group:          Development/Java
 
 License:        ASL 2.0
-URL:            http://spice.sonatype.org
+URL:            https://spice.sonatype.org
 #svn export http://svn.sonatype.org/spice/tags/plexus-sec-dispatcher-1.4/
 #tar jcf plexus-sec-dispatcher-1.4.tar.bz2 plexus-sec-dispatcher-1.4/
 Source0:        %{name}-%{version}.tar.bz2
